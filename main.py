@@ -3,6 +3,7 @@ Find the first ten digit prime number in the sequence of numbers that make up pi
 """
 import math
 import json
+from pprint import pprint
 
 import sympy
 
@@ -16,17 +17,17 @@ for x in pi:
         piNew += x
 
 
-first = ""
+first = []
 for x2 in range(len(piNew)):
     if sympy.isprime(int(piNew[x2:x2 + 10])):
-        first = piNew[x2:x2 + 10]
-        print(first)
-        print(x2, x2 + 10)
-        break
+        newTotal = 0
+        for x3 in str(piNew[x2:x2 + 10]):
+            newTotal += int(x3)
+        if newTotal == 59:
+            first.append(piNew[x2:x2 + 10])
+            print(first[-1])
+            print(x2, x2 + 10)
     else:
         pass
 
-newTotal = 0
-for x3 in first:
-    newTotal += int(x3)
-print(newTotal)
+pprint(first[50])
